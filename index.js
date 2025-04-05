@@ -6,7 +6,7 @@ dotenv.config();
 database.connect();
 app.get("/sairam", (req, res) => {
   return res.json({
-    success: true,
+    success: false,
     message: "Welcome to the server",
   });
 });
