@@ -1,9 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const app = express();
+const userDetails = require("./routes/details");
 const database = require("./config/database");
 dotenv.config();
 database.connect();
+app.use("/api/v1/user", userDetails);
 app.get("/sairam", (req, res) => {
   return res.json({
     success: false,
