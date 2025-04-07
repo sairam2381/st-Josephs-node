@@ -28,3 +28,38 @@ exports.fetchUserName = async (req, res) => {
     });
   }
 };
+exports.putUserName = async (req, res) => {
+  try {
+    const { name, email, mobile, address } = req.body;
+    if (!name || !email || !mobile || !address) {
+      return res.status(400).json({
+        success: false,
+        messgae: "Details not filled",
+      });
+    }
+    const findEmail = await User.find({ email });
+    if (findEmail) {
+      return res.status(404).json({
+        success: false,
+        message: "Email is already existing",
+      });
+    }
+    await User.create({
+      name,
+      email,
+      mobile,
+      address,
+    });
+    return res.status(200).json({
+      success: true,
+      message: "Process is successful",
+    });
+  } catch (e) {
+    console.log("The issue:", e);
+
+    return res.status(404).json({
+      success: false,
+      //   message: e,
+    });
+  }
+};

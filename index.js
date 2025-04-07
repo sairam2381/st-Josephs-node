@@ -6,7 +6,7 @@ const userDetails = require("./routes/details");
 const database = require("./config/database");
 dotenv.config();
 database.connect();
-
+app.use(express.json());
 app.get("/sairam", (req, res) => {
   return res.json({
     success: false,
