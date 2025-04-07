@@ -31,6 +31,8 @@ exports.fetchUserName = async (req, res) => {
 exports.putUserName = async (req, res) => {
   try {
     const { name, email, mobile, address } = req.body;
+    console.log("data", req.body);
+
     if (!name || !email || !mobile || !address) {
       return res.status(400).json({
         success: false,
