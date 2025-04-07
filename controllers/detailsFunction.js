@@ -37,7 +37,7 @@ exports.putUserName = async (req, res) => {
         messgae: "Details not filled",
       });
     }
-    const findEmail = await User.find({ email });
+    const findEmail = await User.findOne({ email });
     if (findEmail) {
       return res.status(404).json({
         success: false,
